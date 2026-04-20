@@ -1,0 +1,222 @@
+\documentclass[10pt,journal,twoside]{IEEEtran} % for editor use only for final preprint
+
+% For initial draft
+%\documentclass[10pt,draftcls,journal,onecolumn]{IEEEtran}
+%\usepackage{endfloat}
+%\usepackage[switch]{lineno}
+%\usepackage{lineno}
+
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\sisetup{multi-part-units=single,separate-uncertainty=true, product-units=single}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{cleveref}
+\usepackage{circuitikz}
+\crefname{equation}{}{}
+\Crefname{equation}{}{}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{svg}
+%\svgpath{{./figures/}}
+%\usepackage[utf8]{inputenc}
+%\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+
+\usepackage{minted}
+\setminted{fontsize=\scriptsize,
+	linenos,breaklines,
+	xleftmargin=10pt,numbersep=4pt}
+%\usepackage{float}
+%\usepackage{verbatim}
+%\usepackage{listings}
+%\usepackage{xcolor}
+%\allowdisplaybreaks
+%
+%\lstset{
+%  language=Python,
+%  basicstyle=\ttfamily\scriptsize,
+%  breaklines=true,
+%  breakatwhitespace=true,
+%  frame=single,
+%  numbers=left,
+%  numberstyle=\tiny\color{gray},
+%  numbersep=8pt,        
+%  xleftmargin=2em,      
+%  showstringspaces=false,
+%  tabsize=2
+%}
+
+
+
+
+\title{Characterization of AC frequency response for an RC low-pass circuit} % Your title goes here
+\author{Rishith Kilaru\thanks{Author for correspondence: 426rkilaru@frhsd.com}, Sagarika Yagnyeshwaran, Jophy Lin, Vijita Ayyangar, and Srilekha Dantu\thanks{Authors are with the Science \& Engineering Magnet Program, Manalapan High School, 20 Church Lane, Englishtown, NJ 07726, USA}} % Authors names here
+% First author is normally a special position
+% Corresponding author is a special position
+% Last author normally most senior
+% You can put your names in any order you decide but be aware of these conventions
+\date{April 16, 2026}
+\markboth{Journal of Science \& Engineering, Vol.~2, No.~4,~April 17, 2026}{Kilaru  \MakeLowercase{\textit{et al.}}: Characterization of AC Frequency Response} % may need shortened form of author names or title
+\setcounter{page}{77} % LEAVE FOR EDITOR
+\newcommand{\keywords}{RC filter, low pass filter, cutoff frequency, Bode plot, frequency response, signal attenuation, oscilloscope, circuit, circuit analysis, AC power source} % put your keywords here, lower case unless proper noun or acronym, separated by commas
+\makeatletter
+\AtBeginDocument{
+\hypersetup{%
+pdftitle={\@title},
+pdfauthor={\@author},
+pdfsubject={physics},
+pdfkeywords={\keywords}}}
+\IEEEoverridecommandlockouts
+\IEEEpubid{\makebox[\columnwidth]{\href{10.64804/z4c41213}{10.64804/z4c41213}~\copyright~2026 J S\&E \href{https://creativecommons.org/licenses/by-nc/4.0/}{CC-BY-NC 4.0}\hfill} \hspace{\columnsep}\makebox[\columnwidth]{ }}% LEAVE FOR EDITOR
+\makeatother
+
+
+
+
+
+
+
+\begin{document}
+%\linenumbers % for editor use
+\maketitle
+
+% AUTHORS PUT YOUR ABSTRACT HERE
+\begin{abstract}
+
+This experiment was conducted to characterize the AC frequency response of an RC low-pass filter. A sinusoidal input voltage was applied to the circuit, allowing the input and output voltages to be measured over a wide range of frequencies. These voltage values were measured with an oscilloscope to analyze the circuit's gain. The input voltage was constant, and the results showed that the output voltage initially approximated the input voltage before decreasing. The point at which the gain decreases to 70.7\% of its maximum value is the cutoff frequency, which was identified at an experimental value of ~200 Hz, which differs from the theoretical value. The behavior witnessed in this circuit is consistent with the ideal response of the low-pass filter.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+\keywords
+\end{IEEEkeywords}
+
+
+\section{Introduction}
+
+RC circuits are resistor-capacitor circuits that can function as low-pass filters, allowing low-frequency signals to pass through while weakening high-frequency signals past a certain cutoff frequency \cite{1}. We have created a simple low-pass filter RC circuit by connecting an AC voltage source, followed by a resistor and a capacitor in series.
+
+The AC frequency response is described by the gain, which is the ratio of output voltage to input voltage \cite{2}: 
+
+\begin{equation}
+\frac{v_{out}}{v_{in}}
+\end{equation}
+
+As frequency increases, the gain decreases until it reaches the cutoff frequency, at which point the output voltage decreases to some fraction of the input voltage \cite{3}.
+
+The purpose of the experiment is to measure the frequency response of the RC low-pass filter and determine the cutoff frequency from the experimental data.
+
+Our null hypothesis is:
+\begin{equation} 
+H_0: \frac{V_{out}}{V_{in}} = \text{constant}
+\end{equation}
+
+While the hypothesis we are testing is:
+\begin{equation}
+H_1: \frac{V_{out}}{V_{in}} \text{ decreases as the frequency increases}
+\end{equation}
+
+
+\section{Methods and materials}
+The equipment used for this experiment was a resistor of resistance (\SI{200}{\kilo\ohm}), a capacitor of capacitance (\SI{0.22}{\micro\farad}), wires, an AC power supply, and an oscilloscope. This was arranged in the following configuration:
+
+    \input{circuit}
+    
+The RC circuit was constructed by connecting the resistor and capacitor in series. The input voltage was applied across the circuit using an AC power supply. The input and output voltages were measured using an oscilloscope, where the input was measured across the total circuit (Channel 1 on the oscilloscope). In contrast, the output values were measured across only the capacitor (Channel 2 on the oscilloscope) for the low-pass filter configuration.
+
+Then, the amplitudes from peak to trough of the measured sinusoidal waves were recorded. Each tick on the oscilloscope represented a change of 0.2V, so we lined the bottom of the wave with the bottom of the display and measured the number of ticks from bottom to top in increments of 0.2V to get the amplitude voltage. We repeated this for Channel 1 and Channel 2 for frequencies of 20, 50, 100, 200, 500, 1000, 1200, 1500, and \SI{2000}{\hertz}.
+
+After recording, we found the gain at each frequency by dividing the Channel 2 amplitudes by the Channel 1 amplitudes. Although we recorded the amplitudes from peak to trough instead of the baseline to a peak or trough, the result of the division would have been the same because the ratio is the same between both ways of measuring. Gain was also expressed in decibels using:
+
+\begin{equation}
+    \text{Gain (dB)} = 20 \cdot \log_{10}\left(\frac{V_{out}}{V_{in}}\right)
+\end{equation}
+
+Channel 1 and Channel 2 were set to \SI{0.5}{\volt}/div, where each division was \SI{0.5}{\volt}, and the time base was set to \SI{0.5}{\milli\second}/div.
+
+The recorded data was used to generate three plots: input and output voltage versus frequency, $\log_{10}(V_{in})$ and $\log_{10}(V_{out})$ versus frequency, $\log_{10}(\text{gain})$ versus frequency, and $\log_{10}(\text{gain})$ versus $\log_{10}(f)$. These were used to analyze the frequency response and identify the cutoff frequency.
+
+\section{Results}
+
+\input{table1}
+This is the raw data of the amplitude (distance from peak to trough) for $V_{in}$ and $V_{out}$ as well as the ratio of $V_{out}$ to $V_{in}$ with respect to frequency in hertz
+
+\input{table2}
+This is the data of the amplitudes $V_{in}$ and $V_{out}$, gain, versus frequency, all on a log scale.
+
+
+\begin{figure}
+\begin{center}
+\includesvg[width=\columnwidth]{V_v_F.svg}
+\end{center}
+\caption{Graph of voltage with respect to frequency, where the red curve represents $V_{in}$ constant at 14.5V, and the blue curve represents $V_{out}$}
+\label{fig:results}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includesvg[width=\columnwidth]{lG_v_F.svg}
+\end{center}
+\caption{Graph of $\log_{10}$ values of gain with respect to frequency, where the blue curve represents the gain}
+\label{fig:flaw}
+\end{figure} 
+
+
+\begin{figure}
+\begin{center}
+\includesvg[width=\columnwidth]{lG_v_lF.svg}
+\end{center}
+\caption{Graph of $\log_{10}$ values of gain with respect to the $\log_{10}$ values of frequency, where the blue curve represents the gain}
+\label{fig: voltage difference}
+\end{figure} 
+
+The table of the raw data shows that the input voltage remained constant, while the output voltage continued to decrease. Therefore, the ratio of the output to input voltage, which is the gain, also continued to decrease. 
+
+
+The graph of the raw data also shows the same, that the input voltage stays constant while the output voltage exponentially decreases and approaches 0.
+
+The graph of $\log_{10}$ gain to frequency shows that the gain initially stays at an approximately constant value, but reaches an inflection point after which the gain continuously decreases. This is the cutoff frequency after which point the higher frequencies are attenuated and only the previous lower frequencies are passed through. This aligns with the theoretical expectations that only the lower frequencies are passed.
+
+\section{Discussion}
+
+Our experiment was unable to capture the gain of the circuit for frequencies under 20 Hz. Therefore, we were unable to directly see the cutoff frequency, as the gain had already fallen below 0.707 by the lowest measured frequency of 20 Hz, where the gain was 0.324. Therefore, we estimate the cutoff frequency to theoretically happen below 20 Hz.
+
+Our results confirm that the RC circuit works as a low-pass filter. At low frequencies, the capacitor is a high impedance, resulting in a large output voltage across the capacitor. When the frequency increases, the capacitor impedance decreases, which results in a reduction in output voltage. The Bode plot of gain versus frequency shows about a linear decrease when it comes to higher frequencies, and that is consistent with the expected -20 dB/decade rolloff of a first-order system.
+
+The cutoff frequency can be compared to the theoretical value given by: 
+
+\begin{equation}
+    f_c = 1/(2\pi RC)
+\end{equation}
+
+With the values of $R=200,000\Omega$ and $C=0.22\mu F$, the cutoff theoretically is $f_c=3.62$ Hz. This means that the experimental value that we got differs by a large factor, and we aim to close the gap through future investigations and further data collection. This discrepancy can be due to many small sources of error. Component tolerances in the resistor and the capacitor mean that their actual values may differ from the labels that they were labeled with. Also, the oscilloscope measurement technique of counting divisions by eye creates a measure of uncertainty, especially at higher frequencies, where the waveform may be harder to read well and clearly. The limited number of frequency steps for us in the first trial, especially near the cutoff region, also reduced the precision of our data.
+
+
+Overall, our experiment illustrated the frequency-dependent behavior of an RC low-pass filter and created results slightly differing from the theoretical predictions. This type of circuit has real-world applications in fields such as audio signal processing, where it can be used to filter out high-frequency noise while also letting low-frequency signals pass through. 
+
+\section*{Acknowledgement} % In IEEE it is called ``acknowledgement'' 
+\addcontentsline{toc}{section}{Acknowledgment} 
+
+The team thanks all group members for their collaborative contributions to this work, including taking measurements and writing the manuscript. This work was made possible through close teamwork and collaboration among all group members throughout the research and writing process. 
+
+We thank RK for lab setup and data collection, SY for data analysis and graphing, and JL for lab report synthesis. We also thank VA and SD for proofreading and editing the initial submission of the lab report.
+
+Lastly, the team would like to thank all peers who have provided constructive feedback and review, helping improve the quality of this work. 
+
+%\end{thebibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{lab.bib}
+
+% Images for the biography should be a 1in wide by 1.25 high or a 5:4 aspect ratio
+% Keep your biography short and to the point or the editors will shorten it
+\newpage
+
+\vfill
+\end{document}
